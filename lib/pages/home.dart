@@ -14,7 +14,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("QR Code Scanner and Generator"),
+        title: const Text("QR Code Scanner and Generator App"),
         backgroundColor: Colors.transparent,
       ),
       body: Center(

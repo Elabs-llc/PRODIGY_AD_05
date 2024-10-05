@@ -13,23 +13,28 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 1, 23, 34),
       appBar: AppBar(
-        title: const Text("QR Code Scanner and Generator App"),
-        backgroundColor: Colors.transparent,
+        elevation: 10.0,
+        backgroundColor: const Color.fromARGB(255, 0, 7, 10),
+        title: const Text(
+          "QR Code Scanner and Generator",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Scanner())),
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Scanner())),
               child: const Text("Scan QR Code"),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Generator())),
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Generator())),
               child: const Text("Generate QR Code"),
             ),
           ],

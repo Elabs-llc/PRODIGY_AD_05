@@ -1,56 +1,79 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_qr_bar_scanner/qr_bar_scanner_camera.dart';
 
 class Scanner extends StatefulWidget {
   const Scanner({super.key});
 
   @override
-  State<Scanner> createState() => _ScannerState();
+  _ScannerState createState() => _ScannerState();
 }
 
 class _ScannerState extends State<Scanner> {
-  String qrResult = "Scanned data will display here";
+  String? _qrInfo = 'Scan a QR/Bar code';
+  bool camState = false;
 
-  Future<void> getScannedData() async {
-    try {
-      final qrCode = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.QR);
-      if (!mounted) return;
-      setState(() {
-        qrResult = qrCode.toString();
-      });
-    } on PlatformException {
-      qrResult = "Fsiled to read QR Code";
-    }
+  qrCallback(String? code) {
+    setState(() {
+      camState = false;
+      _qrInfo = code;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      camState = true;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Scan QR Code"),
-        backgroundColor: Colors.transparent,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (camState == true) {
+            setState(() {
+              camState = false;
+            });
+          } else {
+            setState(() {
+              camState = true;
+            });
+          }
+        },
+        child: Icon(Icons.camera),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 30,
+      body: camState
+          ? Center(
+              child: SizedBox(
+                height: 1000,
+                width: 500,
+                child: QRBarScannerCamera(
+                  onError: (context, error) => Text(
+                    error.toString(),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  qrCodeCallback: (code) {
+                    qrCallback(code);
+                  },
+                ),
+              ),
+            )
+          : Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Code :${_qrInfo!}",
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Text(
-              qrResult,
-              style: const TextStyle(color: Colors.black),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            ElevatedButton(
-                onPressed: () => getScannedData, child: const Text("Scan Code"))
-          ],
-        ),
-      ),
     );
   }
 }

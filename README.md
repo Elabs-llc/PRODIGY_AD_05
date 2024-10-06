@@ -66,7 +66,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For support or inquiries, please contact:
 
-- **Your Name** - [your.email@example.com](mailto:your.email@example.com)
-- GitHub: [yourusername](https://github.com/yourusername)
+- **Elabs** - []()
+- GitHub: [Elabs LLC](https://github.com/Elabs-llc/)
 
 Thank you for using the QR Code Scanner and Generator app! Happy scanning!

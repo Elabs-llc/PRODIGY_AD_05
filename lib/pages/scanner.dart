@@ -30,6 +30,17 @@ class _ScannerState extends State<Scanner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(248, 137, 212, 250),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 0, 7, 10),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        title: Text(
+          "Scan QR Code",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (camState == true) {

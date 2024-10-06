@@ -1,6 +1,5 @@
 # QR Code Scanner and Generator
 
-![QR Code Scanner & Generator Logo](assets/logo.png)
 
 ## Overview
 
@@ -10,7 +9,6 @@ The QR Code Scanner and Generator application, built with Flutter, allows users 
 
 - **QR Code Generation**: Create customized QR codes with text, URLs, and other data.
 - **QR Code Scanning**: Quickly scan QR codes using the device's camera.
-- **History Tracking**: Save and manage scanned codes for easy access.
 - **User-Friendly Interface**: Intuitive design that enhances user experience.
 - **Cross-Platform Compatibility**: Runs smoothly on both Android and iOS devices.
 
@@ -18,7 +16,8 @@ The QR Code Scanner and Generator application, built with Flutter, allows users 
 
 - **Flutter**: A UI toolkit for building natively compiled applications for mobile from a single codebase.
 - **Dart**: The programming language used to develop the application.
-- **QR Code Generator & Scanner Libraries**: Utilizes packages such as [qr_flutter](https://pub.dev/packages/qr_flutter) for generation and [qr_code_scanner](https://pub.dev/packages/qr_code_scanner) for scanning functionalities.
+- **QR Code Generator & Scanner Libraries**: Utilizes packages such as [barcode_widget](https://pub.dev/packages/ barcode_widget
+) for generation and [flutter_qr_bar_scanner](https://pub.dev/packages/flutter_qr_bar_scanner) for scanning functionalities.
 
 ## Installation
 
@@ -33,7 +32,7 @@ The QR Code Scanner and Generator application, built with Flutter, allows users 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/qr-code-scanner-generator.git
+   git clone https://github.com/Elabs-llc/PRODIGY_AD_05.git
    cd qr-code-scanner-generator
    ```
 
@@ -54,7 +53,6 @@ The QR Code Scanner and Generator application, built with Flutter, allows users 
 1. Launch the application.
 2. Choose between **Scan** or **Generate** on the home screen.
 3. Follow the prompts to scan or create your QR codes.
-4. Access your scan history through the **History** section.
 
 ## Contributing
 

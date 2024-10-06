@@ -22,22 +22,40 @@ class _HomeState extends State<Home> {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Scanner())),
-              child: const Text("Scan QR Code"),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Generator())),
-              child: const Text("Generate QR Code"),
-            ),
-          ],
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/qrimage.jpg"),
+                fit: BoxFit.cover)),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                        const Color.fromARGB(221, 0, 0, 0))),
+                onPressed: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Scanner())),
+                child: Text(
+                  "Scan QR Code",
+                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                ),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                        const Color.fromARGB(221, 0, 0, 0))),
+                onPressed: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Generator())),
+                child: const Text(
+                  "Generate QR Code",
+                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

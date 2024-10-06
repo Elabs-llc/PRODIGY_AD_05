@@ -7,7 +7,7 @@ class Generator extends StatefulWidget {
   const Generator({super.key});
 
   @override
-  _GeneratorState createState() => _GeneratorState();
+  State<Generator> createState() => _GeneratorState();
 }
 
 class _GeneratorState extends State<Generator> {

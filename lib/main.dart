@@ -1,20 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:prodigy_ad_03/pages/home.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/logging/app_logger.dart';
+import 'core/theme/app_theme.dart';
+import 'data/datasources/local_storage_service.dart';
+import 'presentation/pages/home/home_page.dart';
+import 'presentation/providers/theme_provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize local storage
+  try {
+    final localStorage = LocalStorageService();
+    await localStorage.init();
+    AppLogger.info('App initialized successfully');
+  } catch (e, stackTrace) {
+    AppLogger.error('Failed to initialize app', e, stackTrace);
+  }
+
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'QR Code Scanner',
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeModeProvider);
+
+    return MaterialApp(
+      title: 'QR Code Pro',
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: themeMode,
+      home: const HomePage(),
     );
   }
 }
